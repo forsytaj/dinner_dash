@@ -3,7 +3,9 @@
  <% if @item.category %>
     <p> Category: <%=@item.category.title %></p>
   <% end %> 
+<%= image_tag @item.photo, class: 'thumbnail' if @item.photo.present? %>
 
+<p> <%= @item.description %> </p>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
