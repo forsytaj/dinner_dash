@@ -5,4 +5,6 @@ class Item < ActiveRecord::Base
   validates_uniqueness_of :title, case_sensitive: false
   validates :price, numericality: {only_integer: true, greater_than: 0}
   
+  belongs_to :category
+  
 end

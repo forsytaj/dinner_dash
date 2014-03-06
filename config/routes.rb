@@ -1,4 +1,5 @@
 DinnerDash::Application.routes.draw do
+  resources :categories
   resources :items
 
   # The priority is based upon order of creation: first created -> highest priority.

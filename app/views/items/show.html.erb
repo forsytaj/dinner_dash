@@ -1,4 +1,9 @@
 <h1><%=@item.title %> <%= number_to_currency @item.price %></h1>
 
+ <% if @item.category %>
+    <p> Category: <%=@item.category.title %></p>
+  <% end %> 
+
+
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
