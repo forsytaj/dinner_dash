@@ -1,6 +1,7 @@
 DinnerDash::Application.routes.draw do
   resources :categories
   resources :items
+  resources :menu
   
   get 'about', to: 'marketing#about'
   get 'faq', to: 'marketing#faq'
