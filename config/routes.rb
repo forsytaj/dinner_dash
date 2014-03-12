@@ -1,7 +1,9 @@
 DinnerDash::Application.routes.draw do
+  resources :orders
+  resources :users
   resources :categories
   resources :items
-  resources :menu
+  resources :menu, only: [:index]
   
   get 'about', to: 'marketing#about'
   get 'faq', to: 'marketing#faq'

@@ -6,5 +6,6 @@ class Item < ActiveRecord::Base
   validates :price, numericality: {only_integer: true, greater_than: 0}
   
   belongs_to :category
+  has_and_belongs_to_many :orders
   
 end
