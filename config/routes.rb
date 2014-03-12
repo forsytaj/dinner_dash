@@ -7,6 +7,9 @@ DinnerDash::Application.routes.draw do
   
   get 'about', to: 'marketing#about'
   get 'faq', to: 'marketing#faq'
+  get 'signup', to: 'users#new'
+  get 'signin', to: ''
+  get 'signout', to: ''
   
   root 'marketing#index'
 
