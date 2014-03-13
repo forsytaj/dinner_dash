@@ -1,4 +1,5 @@
 DinnerDash::Application.routes.draw do
+  resources :sessions
   resources :orders
   resources :users
   resources :categories
@@ -7,9 +8,11 @@ DinnerDash::Application.routes.draw do
   
   get 'about', to: 'marketing#about'
   get 'faq', to: 'marketing#faq'
+  
   get 'signup', to: 'users#new'
-  get 'signin', to: ''
-  get 'signout', to: ''
+  get 'signin', to: 'sessions#new'
+  get 'signout', to: 'sessions#destroy'
+
   
   root 'marketing#index'
 
