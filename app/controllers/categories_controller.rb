@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_filter :authorize, only: [:create, :update, :destroy]
+  before_action :authorized_for_admin?, only: [:index, :new, :create, :update, :destroy]
 
   # GET /categories
   # GET /categories.json

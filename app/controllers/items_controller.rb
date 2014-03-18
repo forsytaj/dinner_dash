@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_filter :authorize, only: [:create, :update, :destroy]
+  before_action :authorized_for_admin?, only: [:index, :new, :create, :update, :destroy]
 
   # GET /items
   # GET /items.json
