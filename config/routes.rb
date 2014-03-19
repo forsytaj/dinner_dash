@@ -6,6 +6,10 @@ DinnerDash::Application.routes.draw do
   resources :items
   resources :menu, only: [:index]
   
+  get 'cart', to: 'cart#show', as: :cart
+  get 'cart/:item_id/add', to: 'cart#add', as: :add_item_cart
+  get 'cart/:item_id/remove', to: 'cart#remove', as: :remove_item_cart
+  
   get 'about', to: 'marketing#about'
   get 'faq', to: 'marketing#faq'
   

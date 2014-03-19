@@ -28,6 +28,7 @@
         <%= content_tag :li, link_to('Orders', orders_path), class: active_section_class('orders') %>
         <%= content_tag :li, link_to('About', about_path), class: active_class(about_path) %>
         <%= content_tag :li, link_to('FAQ', faq_path), class: active_class(faq_path) %>
+        <%= content_tag :li, link_to("<i class='glyphicon glyphicon-shopping-cart'></i> <span class='badge'>#{current_cart.items_count}</span>".html_safe, cart_path), class: active_class(cart_path) %>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
