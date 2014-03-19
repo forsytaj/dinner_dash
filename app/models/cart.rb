@@ -9,6 +9,10 @@ class Cart
     @session[:item_ids] << item.id
   end 
   
+  def remove_item(item)
+    @session[:item_ids].delete(item.id)
+  end 
+  
   def items
     Item.find @session[:item_ids]
   end

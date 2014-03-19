@@ -6,7 +6,13 @@
   <ul class="list-group"> 
 
   <% current_cart.items.each do |item| %>
-      <%= render item %>
+      <li class="list-group-item">
+      <%= link_to item.title, item_path(item) %> 
+      <span class="text-muted"><%= truncate item.description, length: 80 %></span>
+      <span class="badge"><%= number_to_currency item.price %></span>
+       ( <%= link_to 'Remove from Cart', remove_item_cart_path(item) %> )
+      </li>
    <% end %>
   </ul>
+  
 </div>

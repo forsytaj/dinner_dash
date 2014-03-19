@@ -7,6 +7,9 @@ class CartController < ApplicationController
   end 
   
   def remove
+    item = Item.find(params[:item_id])
+    current_cart.remove_item(item) if item
+    redirect_to cart_path
   end
   
 end
