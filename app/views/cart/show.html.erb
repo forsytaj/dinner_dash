@@ -1,4 +1,8 @@
 <h1>Cart</h1>
+
+<% if current_cart.empty? %>
+  <p>Your cart is empty. <% link_to 'See the menu', menu_index_path %></p>
+<% else %>
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Items</h3>
@@ -14,5 +18,7 @@
       </li>
    <% end %>
   </ul>
-  
 </div>
+<%= link_to 'Place Order', orders_path, method: :post, class: 'btn btn-primary' %>
+
+<% end %>

@@ -15,15 +15,15 @@ class ApplicationController < ActionController::Base
   end 
   
   def authorize
-    redirect_to signin_url, alert: "Not authorized!" unless user_signed_in?
+    redirect_to signin_url, notice: "Not authorized!" unless user_signed_in?
   end 
   
   def authorized_for_admin?
-     redirect_to root_path, alert: 'Not authorized!' unless is_admin?
+    redirect_to root_path, notice: 'Not authorized!' unless is_admin?
   end
   
   def authorized_for_self?
-    redirect_to root_path, alert: 'Not authorized!' unless user_signed_in? && (current_user.id.to_s == params[:id])
+    redirect_to root_path, notice: 'Not authorized!' unless user_signed_in? && (current_user.id.to_s == params[:id])
   end
   
   

@@ -1,6 +1,6 @@
 DinnerDash::Application.routes.draw do
   resources :sessions
-  resources :orders
+  resources :orders, except: [:new]
   resources :users
   resources :categories
   resources :items

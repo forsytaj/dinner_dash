@@ -21,4 +21,15 @@ class Cart
     @session[:item_ids].size
   end
   
+  def item_ids
+    @session[:item_ids]
+  end
+  
+  def empty?
+    @session[:item_ids].empty?
+  end 
+  
+  def empty!
+    @session[:item_ids] = []
+  end
 end
