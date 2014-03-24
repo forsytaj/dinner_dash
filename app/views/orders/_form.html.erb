@@ -10,8 +10,9 @@
       </ul>
     </div>
   <% end %>
-<br />
+<%= f.input :order_status, as: :select, collection: Order.order_statuses %>
   <div class="actions">
-    <%= f.submit %>
+    <br />
+    <%= f.submit class: 'btn btn-primary'%>
   </div>
 <% end %>

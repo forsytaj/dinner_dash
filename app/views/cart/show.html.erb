@@ -19,6 +19,10 @@
    <% end %>
   </ul>
 </div>
-<%= link_to 'Place Order', orders_path, method: :post, class: 'btn btn-primary' %>
+<%= simple_form_for(Order.new, html: {class: 'form-inline'}) do |f| %>
+  <%= f.input :pickup_at, default: 15.minutes.from_now %>
+  <br />
+  <%= f.submit 'Place Order', class: 'btn btn-primary' %>
+<% end %>
 
 <% end %>
