@@ -1,2 +1,18 @@
-<%= link_to 'Edit', edit_order_path(@order) %> |
+<h1> Your Order </h1>
+
+<p><strong>Date:</strong> <%= @order.created_at %></p>
+<p><strong>Order Status:</strong> <%= @order.order_status %></p>
+<p><strong>Total:</strong> <%= number_to_currency @order.items.sum(:price)%></p>
+
+<br/>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Items</h3>
+  </div>
+  <ul class="list-group"> 
+    <%= render @order.items %>
+  </ul>
+</div>
+
+
 <%= link_to 'Back', orders_path %>
