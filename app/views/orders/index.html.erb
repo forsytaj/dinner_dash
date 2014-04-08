@@ -1,5 +1,20 @@
 <h1>Listing orders</h1>
 
+<% if is_admin? %>
+  <div class='well'>
+    <%= form_tag orders_path, method: :get, class: 'form form-inline' do %>
+    Filter Orders:
+    <%= select_tag :order_status, options_for_select(Order.order_statuses_for_select, params[:order_status]), class: 'form-control' %> 
+    <%= submit_tag 'Go!', class: 'btn' %>
+      <% Order.order_statuses.each do |s| %>
+        <%= s.humanize %>:  ?
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @orders.any? %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -17,7 +32,7 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= link_to order.created_at, order_path(order) %></td>
-        <td><%= order.order_status %></td>
+        <td><%= order.order_status.humanize %></td>
         <td><%= order.pickup_at %></td>
         <% if is_admin? %>
          <td><%= order.user.name %></td>
@@ -28,4 +43,8 @@
   </tbody>
 </table>
 
-<br>
+<% else %>
+
+<p>Sorry, looks like there aren't any orders.</p>
+
+<% end %>

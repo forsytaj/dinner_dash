@@ -1,6 +1,6 @@
 DinnerDash::Application.routes.draw do
   resources :sessions
-  resources :orders, except: [:new]
+  resources :orders, except: [:new] 
   resources :users
   resources :categories
   resources :items
@@ -9,6 +9,8 @@ DinnerDash::Application.routes.draw do
   get 'cart', to: 'cart#show', as: :cart
   get 'cart/:item_id/add', to: 'cart#add', as: :add_item_cart
   get 'cart/:item_id/remove', to: 'cart#remove', as: :remove_item_cart
+ 
+  get 'orders/:id/remove/:item_id', to: 'orders#remove_item', as: :remove_item_order
   
   get 'about', to: 'marketing#about'
   get 'faq', to: 'marketing#faq'

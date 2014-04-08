@@ -1,5 +1,6 @@
 <h1> Your Order </h1>
 
+<p><strong>Ordered By:</strong> <%= @order.user.name %> (<%= mail_to(@order.user.email) %>)
 <p><strong>Date:</strong> <%= @order.created_at %></p>
 <p><strong>Order Status:</strong> <%= @order.order_status %></p>
 <p><strong>Total:</strong> <%= number_to_currency @order.items.sum(:price)%></p>
@@ -10,7 +11,16 @@
     <h3 class="panel-title">Items</h3>
   </div>
   <ul class="list-group"> 
-    <%= render @order.items %>
+     <% @order.items.each do |item| %>
+      <li class="list-group-item">
+      <%= link_to item.title, item_path(item) %> 
+      <span class="text-muted"><%= truncate item.description, length: 80 %></span>
+      <span class="badge"><%= number_to_currency item.price %></span>
+      <% if is_admin? %> 
+        ( <%= link_to 'Remove from Cart', remove_item_order_path(@order, item) %> )
+      <% end %>
+      </li>
+   <% end %>
   </ul>
 </div>
 
