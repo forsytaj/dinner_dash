@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   
   include ActionView::Helpers::DateHelper
   
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :remove_item]
-  before_action :authorized_for_admin?, only: [:edit, :update, :destroy, :remove_item]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :remove_item, :cancel]
+  before_action :authorized_for_admin?, only: [:edit, :update, :destroy, :remove_ite, :cancel, :paid, :completed]
   before_action :authorize, only: [:index, :new, :create, :show]
 
   # GET /orders
@@ -73,6 +73,28 @@ class OrdersController < ApplicationController
     @order.items.destroy(item) if item
     redirect_to order_path(@order), alert: 'Item successfully removed.'
   end 
+  
+  def cancel
+    order = Order.find(params[:id])
+    order[:order_status] = Order.order_statuses[2]
+    order.save
+    redirect_to orders_path, notice: 'Order cancelled.' 
+  end
+  
+  def paid
+    order = Order.find(params[:id])
+    order[:order_status] = Order.order_statuses[1]
+    order.save
+    redirect_to orders_path, notice: 'Order status updated to paid.'
+  end
+  
+  def completed
+    order = Order.find(params[:id])
+    order[:order_status] = Order.order_statuses[3]
+    order.save
+    redirect_to orders_path, notice: 'Order completed.' 
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order

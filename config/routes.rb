@@ -11,6 +11,9 @@ DinnerDash::Application.routes.draw do
   get 'cart/:item_id/remove', to: 'cart#remove', as: :remove_item_cart
  
   get 'orders/:id/remove/:item_id', to: 'orders#remove_item', as: :remove_item_order
+  get 'orders/:id/cancel', to: 'orders#cancel', as: :cancel_order
+  get 'orders/:id/paid', to: 'orders#paid', as: :paid_order
+  get 'orders/:id/completed', to: 'orders#completed', as: :completed_order
   
   get 'about', to: 'marketing#about'
   get 'faq', to: 'marketing#faq'
