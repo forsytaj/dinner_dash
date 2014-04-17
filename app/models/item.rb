@@ -6,7 +6,10 @@ class Item < ActiveRecord::Base
   validates :price, numericality: {only_integer: true, greater_than: 0}
   
   scope :active, -> { where(active: true) }
-  scope :max_price, -> (ant) {where('items.price < ?', ant)}
+  
+  before_create do 
+    self.prep_time ||= 12
+  end 
   
   belongs_to :category
   has_and_belongs_to_many :orders

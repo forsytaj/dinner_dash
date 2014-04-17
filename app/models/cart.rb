@@ -14,7 +14,8 @@ class Cart
   end 
   
   def items
-    Item.find @session[:item_ids]
+    #item_ids.collect { |i| Item.find(i) }
+    Item.where :id => item_ids
   end
   
   def items_count
@@ -32,4 +33,9 @@ class Cart
   def empty!
     @session[:item_ids] = []
   end
+  
+  def calculate_earliest_pickup_at
+    @calculate_earliest_pickup_at ||= Order.calculate_earliest_pickup_at(items)
+  end 
+  
 end

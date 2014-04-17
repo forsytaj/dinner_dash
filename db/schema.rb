@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408190137) do
+ActiveRecord::Schema.define(version: 20140417000000) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140408190137) do
     t.integer  "category_id"
     t.string   "photo"
     t.boolean  "active",      default: true
+    t.integer  "prep_time"
   end
 
   create_table "items_orders", id: false, force: true do |t|
