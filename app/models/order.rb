@@ -6,13 +6,17 @@ class Order < ActiveRecord::Base
   validates_presence_of :user_id
   validate :minimum_items_count
   validate :earliest_pickup_at
-  validate :open_for_business
+  validate :open_for_business, on: :create
   
   scope :with_status, -> (status) { where(order_status: status)}
   
   before_validation(on: :create) do
     self.pickup_at ||= Time.zone.now + 15.minutes
     self.order_status = Order.order_statuses.first
+  end 
+
+  after_create do 
+    OrderMailer.message(self).deliver
   end 
   
   def minimum_items_count

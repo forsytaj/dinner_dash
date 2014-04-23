@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:show]
   before_action :authorized_for_admin?, except: [:show]
 
   # GET /items
@@ -72,4 +73,8 @@ class ItemsController < ApplicationController
     def item_params
       params[:item].permit!
     end
+    
+  def set_review
+    @review = Review.new(item_id: @item.id)
+  end 
 end

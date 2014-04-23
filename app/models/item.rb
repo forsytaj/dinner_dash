@@ -13,5 +13,9 @@ class Item < ActiveRecord::Base
   
   belongs_to :category
   has_and_belongs_to_many :orders
+  has_many :reviews
   
+  def average_rating
+    reviews.average(:rating).try(:round, 1)
+  end 
 end

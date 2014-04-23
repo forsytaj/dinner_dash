@@ -14,8 +14,7 @@ class Cart
   end 
   
   def items
-    #item_ids.collect { |i| Item.find(i) }
-    Item.where :id => item_ids
+   Item.where :id => item_ids
   end
   
   def items_count
