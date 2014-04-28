@@ -36,6 +36,10 @@ class Order < ActiveRecord::Base
   def calculate_earliest_pickup_at
     @calculate_earliest_pickup_at ||= Order.calculate_earliest_pickup_at(items)
   end 
+
+  def total
+    items.sum(&:price)
+  end 
   
   def self.order_statuses
     ['ordered', 'paid', 'cancelled', 'completed']
