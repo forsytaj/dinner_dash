@@ -6,23 +6,7 @@
 <p><strong>Total:</strong> <%= number_to_currency @order.total%></p>
 
 <br/>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Items</h3>
-  </div>
-  <ul class="list-group"> 
-     <% @order.items.each do |item| %>
-      <li class="list-group-item">
-      <%= link_to item.title, item_path(item) %> 
-      <span class="text-muted"><%= truncate item.description, length: 80 %></span>
-      <span class="badge"><%= number_to_currency item.price %></span>
-      <% if is_admin? %> 
-        ( <%= link_to 'Remove from Cart', remove_item_order_path(@order, item) %> )
-      <% end %>
-      </li>
-   <% end %>
-  </ul>
-</div>
 
+<%= render partial: '/cart_items', object: @order %>
 
 <%= link_to 'Back', orders_path %>

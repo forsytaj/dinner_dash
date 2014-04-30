@@ -1,4 +1,4 @@
-<h1><%=@item.title %> <%= number_to_currency @item.price %></h1>
+<h1><%=@item.title %> <span class="badge"><%= @item.display_price.html_safe %></span></h1>
 
  <% if @item.category %>
     <p> Category: <%=@item.category.title %></p>
