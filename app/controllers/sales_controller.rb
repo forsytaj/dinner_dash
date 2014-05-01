@@ -1,5 +1,6 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
+  before_action :authorized_for_admin?, only: [:index, :new, :create, :update, :destroy, :show]
 
   # GET /sales
   # GET /sales.json
@@ -28,7 +29,7 @@ class SalesController < ApplicationController
 
     respond_to do |format|
       if @sale.save
-        format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
+        format.html { redirect_to sales_path, notice: 'Sale was successfully created.' }
         format.json { render action: 'show', status: :created, location: @sale }
       else
         format.html { render action: 'new' }
@@ -42,7 +43,7 @@ class SalesController < ApplicationController
   def update
     respond_to do |format|
       if @sale.update(sale_params)
-        format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
+        format.html { redirect_to sales_path, notice: 'Sale was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -69,6 +70,6 @@ class SalesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params[:sale]
+      params[:sale].permit!
     end
 end

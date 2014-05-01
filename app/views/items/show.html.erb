@@ -11,8 +11,10 @@
 <p><%= link_to 'Add to Cart', add_item_cart_path(@item), class: 'btn btn-primary' %></p>
 <% end %>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<% if is_admin? %>
+  <%= link_to 'Edit', edit_item_path(@item) %> |
+  <%= link_to 'Back', items_path %>
+<% end %>
 
 <h2>Reviews <% if @item.reviews.any? %> (Average rating: <%= @item.average_rating %> stars) <% end %></h2>
 
