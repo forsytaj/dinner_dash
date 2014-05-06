@@ -13,8 +13,8 @@ class Item < ActiveRecord::Base
     self.prep_time ||= 12
   end 
   
-  belongs_to :category
-  belongs_to :sale
+  belongs_to :category, counter_cache: true
+  belongs_to :sale, counter_cache: true
   has_and_belongs_to_many :orders
   has_many :reviews
   

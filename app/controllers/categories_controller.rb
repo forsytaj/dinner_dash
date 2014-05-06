@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:edit, :update, :destroy]
   before_action :authorized_for_admin?, only: [:index, :new, :create, :update, :destroy]
 
   # GET /categories
@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @category = Category.includes(items: :sale).find(params[:id])
   end
 
   # GET /categories/new

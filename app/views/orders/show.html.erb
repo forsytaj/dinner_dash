@@ -2,7 +2,7 @@
 
 <p><strong>Ordered By:</strong> <%= @order.user.name %> (<%= mail_to(@order.user.email) %>)
 <p><strong>Date:</strong> <%= @order.created_at %></p>
-<p><strong>Order Status:</strong> <%= @order.order_status %></p>
+<p><strong>Order Status:</strong> <%= @order.order_status.humanize %></p>
 <p><strong>Total:</strong> <%= number_to_currency @order.total%></p>
 
 <br/>

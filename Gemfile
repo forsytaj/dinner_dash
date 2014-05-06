@@ -47,3 +47,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'simple_form'
 gem 'compass-rails'
 gem 'bootstrap-sass', '~> 3.1'
+
+## Gemfile for Rails 3, Rails 4, Sinatra, and Merb
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'

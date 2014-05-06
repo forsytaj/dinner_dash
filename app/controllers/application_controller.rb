@@ -3,8 +3,14 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
+  #before_action :miniprofiler if Rails.env.development?
+  
   private
-  helper_method :current_cart, :current_user, :is_admin?, :user_signed_in?
+  helper_method :current_cart, :current_user, :is_admin?, :user_signed_in?, :per_page
+  
+  def per_page
+    params[:per_page] || 10
+  end 
   
   def current_cart
     @current_cart ||= Cart.new(session)

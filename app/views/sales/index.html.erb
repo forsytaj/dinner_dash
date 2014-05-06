@@ -16,7 +16,7 @@
         <tr>
           <td><%= link_to sale.title, sale_path(sale)%></td>
           <td><%= sale.discount %>%</td>
-          <td><%= sale.items.count %></td>
+          <td><%= sale.items_count %></td>
           <td><%= link_to 'Edit', edit_sale_path(sale) %> | <%= link_to 'Delete', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
