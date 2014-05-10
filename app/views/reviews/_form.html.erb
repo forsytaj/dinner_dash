@@ -17,9 +17,9 @@
   <%= f.input :rating, as: :select, collection: Review.ratings %>
   <%= f.hidden_field :user_id, value: current_user.id if user_signed_in? %>  
 
-  <br />
+ 
   <div class="actions">
+     <br />
     <%= f.submit class: 'btn btn-primary' %>
   </div>
-<br />
 <% end %>

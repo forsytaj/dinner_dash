@@ -2,4 +2,4 @@ Ordered By: <%= @order.user.name %> (<%= mail_to(@order.user.email) %>)
 Date: <%= @order.created_at %>
 Pickup At: <%= @order.pickup_at %>
 Order Status: <%= @order.order_status %>
-Total: <%= number_to_currency @order.items.sum(:price)%>
+Total: <%= number_to_currency @order.total%>

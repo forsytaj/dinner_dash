@@ -31,13 +31,14 @@
         <%= content_tag :li, link_to('FAQ', faq_path), class: active_class(faq_path) %>
         <%= content_tag :li, link_to("<i class='glyphicon glyphicon-shopping-cart'></i> <span class='badge'>#{current_cart.items_count}</span>".html_safe, cart_path), class: active_class(cart_path) %>
       </ul>
-      <p class="navbar-text navbar-right"><% if current_user %>
+      <% if current_user %>
+      <p class="navbar-text navbar-right">
     Logged in as <%= current_user.email %>.
     <%= link_to 'Edit Account', edit_user_path(current_user.id)%> or
-  <%= link_to 'Sign Out', signout_path %>.
+    <%= link_to 'Sign Out', signout_path %>.
   <% else %>
-  <%= link_to('Sign Up', signup_path) %> or
-  <%= link_to('Sign In', signin_path) %>
+    <%= link_to('Sign Up', signup_path) %> or
+    <%= link_to('Sign In', signin_path) %>
   <% end %>
       </p>
   </div>
