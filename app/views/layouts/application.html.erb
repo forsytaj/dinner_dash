@@ -36,7 +36,9 @@
     Logged in as <%= current_user.email %>.
     <%= link_to 'Edit Account', edit_user_path(current_user.id)%> or
     <%= link_to 'Sign Out', signout_path %>.
+      </p>
   <% else %>
+        <p class="navbar-text navbar-right">
     <%= link_to('Sign Up', signup_path) %> or
     <%= link_to('Sign In', signin_path) %>
   <% end %>
